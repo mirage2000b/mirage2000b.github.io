@@ -8,23 +8,40 @@
     <meta name="keywords" content="關鍵字1, 關鍵字2,關鍵字3, 關鍵字4">
     <title>mirage2000b的網站</title>
     <!--在title下設定style會整個套用這整個頁面-->
-    <link rel="stylesheet" href=".css">
+    <!--<link rel="stylesheet" href="/style/style01.css">-->
     <style>
-        header,nav{
-            height:50px;
-            background:rgb(134,91,212)
+        header{
+    height:50px;
+    background:rgb(134,91,212)
+        }
+        nav{
+    height:50px;
+    background:rgb(208, 217, 192)
+        }
+        /*  */
+        main{
+            display: flex;
+            flex-direction: row;
+        }
+        /* article */
+        article{
+            background-color: crimson;
+            width: 70%;
         }
     </style>
 
 </head>
 <body>
-    <header style="height:50px; background:rgb(134,91,212) ">網站標題</header>
-    <nav style="height:50px; background:rgb(134,91,212)">nav</nav>
-    <main>main
-        <article>article</article>
-        <section>section</section>
-        <aside>aside</aside>
-        </main>
+    <header>網站標題</header>
+    <nav>nav</nav>
+    <main>
+        main
+        <article>article
+            <section>section</section>
+        </article>
+        <aside>aside
+        </aside>
+    </main>
 
 
     <footer>footer</footer>
