@@ -1,7 +1,8 @@
 
 function test(){
 
-    let item = {
+    let item =
+    {
     width: '3',
     label: '姓名',
     type: "text",
@@ -9,7 +10,6 @@ function test(){
     value: "",
     valid: "required",
     option: "單選1|單選2|單選3"
-
     };
 
     for(let i in item)
