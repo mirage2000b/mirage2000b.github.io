@@ -26,7 +26,17 @@
 </head>
 
 <body>
-  <main class="container">
+    <main class="container">
+
+    </main>
+    <script>
+        window.onload = function(){
+        let box = document.querySelector('.container');
+        box.insertAdjacentHTML("afterend", "<div class='text-center mt-3'>container寬度：" + box.clientWidth + "px</div>" + "<div class='text-center mt-3'>網頁可見區域寬：" + document.body.clientWidth + "px</div>" );
+    }
+    </script>
+
+
     <h1 class="text-center mt-3">表單</h1>
     <form action="https://script.google.com/macros/s/AKfycbwtDqZiw3RSzAksn5TaFedWu_V0GGa51UrDXk9UVswEBCg_9bF18Hc9M0uuNxsxNpZg/exec" method="post">
 
@@ -174,11 +184,7 @@
 
     </form>
     </main>
-    <script>
-        window.onload = function(){
 
-        }
-    </script>
 
 
 </body>
