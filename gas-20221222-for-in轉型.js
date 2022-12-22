@@ -1,6 +1,6 @@
 
 /*=====================================
-  20221222-5
+    20221222-5
 =====================================*/
 function test() {
     //取得試算表
@@ -20,9 +20,9 @@ function test() {
      */
     for(let i in data){
       //寫資料
-      colIndex = parseInt(i)+1;//
-      range = ws.getRange(rowIndex, colIndex);
-      range.setValue(data[i]);
+    colIndex = parseInt(i)+1;//
+    range = ws.getRange(rowIndex, colIndex);
+    range.setValue(data[i]);
     }
 
 
@@ -34,4 +34,4 @@ function test() {
     // }
 
 
-  }
+}
