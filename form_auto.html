@@ -48,32 +48,9 @@
 
 
         <!-- 多選 -->
-        <div class="col-sm-12 mb-3">
-          <label class="form-label w-100">多選</label>
-
-          <div class="form-check form-check-inline">
-            <input type="checkbox" name="checkbox" value="" class="form-check-input checkbox" id="checkbox_1">
-            <label class="form-check-label" for="checkbox_1">多選1</label>
-          </div>
-
-          <div class="form-check form-check-inline">
-            <input type="checkbox" name="checkbox" value="多選2" class="form-check-input checkbox" id="checkbox_2" checked>
-            <label class="form-check-label" for="checkbox_2">多選2</label>
-          </div>
-
-          <div class="form-check form-check-inline">
-            <input type="checkbox" name="checkbox" value="多選3" class="form-check-input checkbox" id="checkbox_3">
-            <label class="form-check-label" for="checkbox_3">多選3</label>
-          </div>
-        </div>
 
 
 
-        <!-- 文字區域(多行) -->
-        <div class="col-sm-12 mb-3">
-          <label class="form-label">文字區域</label>
-          <textarea name="textarea" class="form-control" id="textarea" rows="5" required>文字區域123</textarea>
-        </div>
 
       </div>
 
@@ -220,6 +197,24 @@
           option: '台南|高雄|屏東',
           width: '3'
         },
+        {
+          label: '詳細內容',
+          type: '段落',
+          name: 'textarea',
+          value: '123',
+          valid: 'required', //required
+          option: '',
+          width: '12'
+        },
+        {
+          label: '種類',
+          type: 'checkbox',
+          name: 'checkbox',
+          value: '',
+          valid: 'required', //required
+          option: '學科|術科',
+          width: '12'
+        },
       ];
       let form_item = document.getElementById('form_item');
       let form_item_html = options_html = '';
@@ -310,6 +305,29 @@
               <select name="${stru[i]['name']}" class="form-select" id="${stru[i]['name']}" ${stru[i]['valid']} multiple >
                ${options_html}
               </select>
+            </div>`;
+        }else if(stru[i]['type'] === '段落'){
+
+          form_item_html += `
+            <div class="col-sm-${stru[i]['width']} mb-3">
+              <label class="form-label">${stru[i]['label']}</label>
+              <textarea name="${stru[i]['name']}" class="form-control" id="${stru[i]['name']}" rows="5" ${stru[i]['valid']}>${stru[i]['value']}</textarea>
+            </div>`;
+        }else if(stru[i]['type'] === 'checkbox'){
+          options = stru[i]['option'].split('|');
+          options_html = '';
+          for(let j in options){
+            options_html += `
+              <div class="form-check form-check-inline">
+                <input type="${stru[i]['type']}" name="${stru[i]['name']}" value="${options[j]}" class="form-check-input" id="${stru[i]['name']}_${j}" ${stru[i]['valid']}>
+                <label class="form-check-label" for="${stru[i]['name']}_${j}">${options[j]}</label>
+              </div>`;
+          };
+
+          form_item_html += `
+            <div class="col-sm-${stru[i]['width']} mb-3">
+              <label class="form-label w-100">${stru[i]['label']}</label>
+              ${options_html}
             </div>`;
         }
 
