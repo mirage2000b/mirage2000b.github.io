@@ -57,18 +57,18 @@ function get_stru_payment() {
 
     //整理資料 stru
     //跑迴圈
-
+    let stru_payment = get_stru_payment();
 
     let rowIndex = 1;
     let colIndex;
     /**
      * 字串 轉 數字 parseInt() Number()
      */
-    for (let i in stru) {
+    for (let i in stru_payment) {
       //寫資料
       colIndex = parseInt(i) + 1;//
       range = ws.getRange(rowIndex, colIndex);
-      range.setValue(stru[i]['label']);
+      range.setValue(stru_payment[i]['label']);
     }
 
 
