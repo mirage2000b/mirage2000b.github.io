@@ -66,9 +66,9 @@ function get_stru_payment() {
      */
     for (let i in stru_payment) {
       //寫資料
-      colIndex = parseInt(i) + 1;//
-      range = ws.getRange(rowIndex, colIndex);
-      range.setValue(stru_payment[i]['label']);
+        colIndex = parseInt(i) + 1;//
+        range = ws.getRange(rowIndex, colIndex);
+        range.setValue(stru_payment[i]['label']);
     }
 
 
