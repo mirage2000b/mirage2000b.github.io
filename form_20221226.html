@@ -41,10 +41,17 @@
 </head>
 
 <body>
+
+
+  <!-- 資料處理時畫面 -->
+  <div class="d-none my-5" id="show">
+    <span>資料處理中....<img src="https://i.imgur.com/pm9SKUg.gif"></span>
+  </div>
+
   <main class="container">
     <h1 class="text-center mt-3">繳費通知單</h1>
 
-    <form action="https://script.google.com/macros/s/AKfycbzeIg2WAOUDq7qQ-_ib3qwMdfs35LGh3Gv85PcW2tGzudKNvqhx-kdSJMl0kh1eNOmg/exec" class="" method="post">
+    <form action="https://script.google.com/macros/s/AKfycbwtDqZiw3RSzAksn5TaFedWu_V0GGa51UrDXk9UVswEBCg_9bF18Hc9M0uuNxsxNpZg/exec" class="" method="post">
       <div class="row" id="form_item">
 
       </div>
@@ -66,10 +73,10 @@
       box.insertAdjacentHTML("afterend", "<div class='text-center mt-3'>container寬度：" + box.clientWidth + "px</div>" + "<div class='text-center mt-3'>網頁可見區域寬：" + document.body.clientWidth + "px</div>");
 
       // 取得結構資料
-      // let url = 'https://script.google.com/macros/s/AKfycbwtDqZiw3RSzAksn5TaFedWu_V0GGa51UrDXk9UVswEBCg_9bF18Hc9M0uuNxsxNpZg/exec';
+      let url = 'https://script.google.com/macros/s/AKfycbwtDqZiw3RSzAksn5TaFedWu_V0GGa51UrDXk9UVswEBCg_9bF18Hc9M0uuNxsxNpZg/exec';
 
-
-      let url = 'https://script.google.com/macros/s/AKfycbzeIg2WAOUDq7qQ-_ib3qwMdfs35LGh3Gv85PcW2tGzudKNvqhx-kdSJMl0kh1eNOmg/exec'
+      //17
+      // let url = 'https://script.google.com/macros/s/AKfycbzJYXRQcIWxUjPPbFtxd8da3Q2bNZ2j9p4DROe67lVfjz_JLcJs_KzMN8ZMIaDliBJB/exec'
 
       let data = {
         op: 'api_stru_payment'
@@ -82,15 +89,27 @@
         dataType: 'json', // 請求資料的類型(Ex:xml, json, script, or html...等)
         async: true, // 預設是true=非同步,false=同步 (true時整行可省略)
         beforeSend: function() { // 發送請求前執行的動作
+          $("#show").prop("class", "my-5");
           //......
         },
         success: function(result) { // 當成功接收到資料時
+          $("#show").prop("class", "d-none my-5");
           let stru = result;
+          // 產生表單語法
           create_template('form_item', stru);
+
+          $("#date").prop({
+            min: '2022-12-26',
+            max: '2023-01-10'
+          });
+
+          let callback_url = document.getElementById('callback_url');
+          callback_url.value = window.location.href;
 
 
         },
         error: function(error) { // 當接收資料失敗時
+          $("#show").prop("class", "d-none my-5");
           console.log(error);
           //......
         }
@@ -237,13 +256,6 @@
       // $("#date").prop('min','2022-12-26');
       // $("#date").prop('max','2022-12-31');
       // val()
-      $("#date").prop({
-        min: '2022-12-26',
-        max: '2023-01-10'
-      });
-
-      let callback_url = document.getElementById('callback_url');
-      callback_url.value = window.location.href;
 
       //----------------------------------------結束
 
