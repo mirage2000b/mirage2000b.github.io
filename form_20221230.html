@@ -57,6 +57,7 @@
       </div>
       <input type="hidden" name="op" value="payment" id="op">
       <input type="hidden" name="callback_url" value="" id="callback_url">
+      <input type="hidden" name="callback_home_url" value="" id="callback_home_url">
       <button type="submit" class="btn btn-primary w-100" id="submit">送出</button>
     </form>
   </main>
@@ -73,16 +74,10 @@
       box.insertAdjacentHTML("afterend", "<div class='text-center mt-3'>container寬度：" + box.clientWidth + "px</div>" + "<div class='text-center mt-3'>網頁可見區域寬：" + document.body.clientWidth + "px</div>");
 
       // 取得結構資料
-      let url = 'https://script.google.com/macros/s/AKfycbwTszxXWEthaqp6RZ5EXDPIFKebST6XjhxcFby9TXJGquUt9y1yge0jIMcl7u7Fjd9HGA/exec';
+      let url = 'https://script.google.com/macros/s/AKfycbwtDqZiw3RSzAksn5TaFedWu_V0GGa51UrDXk9UVswEBCg_9bF18Hc9M0uuNxsxNpZg/exec';
 
+      //設定表單 action
       $('#myForm').prop('action', url);
-
-      // 取得結構資料 1
-      // let url = 'https://script.google.com/macros/s/AKfycbzU7OU-7qKfbjcZpxSkihrDzHhT1CKVitxyxwr7rrPgUUZgSCujQp4Jffn3ceGqDijX/exec';
-
-      // 取得結構資料 5
-      // let url = 'https://script.google.com/macros/s/AKfycbwYiRtZhwglsQSF5_WU_UbSVIjeeyo9TIMxDhuoYrYOlxPZzCALcgUYGpFh7yFP9xbpJg/exec';
-
 
       let data = {
         op: 'api_stru_payment'
@@ -109,9 +104,14 @@
             max: '2023-01-10'
           });
 
+          //表單網址
           let callback_url = document.getElementById('callback_url');
           callback_url.value = window.location.href;
 
+          //首頁網址
+          let callback_home_url = document.getElementById('callback_home_url');
+          let home_url = window.location.href;
+          callback_home_url.value = home_url.replace(window.location.pathname, '');
 
         },
         error: function(error) { // 當接收資料失敗時
